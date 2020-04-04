@@ -398,10 +398,41 @@ MapperRegistry是什么?
   可能会遇到的问题：
 
   1. 配置文件没有注册
+  
   2. 绑定接口错误
+  
   3. 方法名不对
+  
   4. 返回类型不对
-  5. Maven导出资源问题
+  
+  5. Maven导出资源问题，target目录下没有对应xml文件
+  
+     解决：pom文件没有配置build，添加如下配置：到处所有xml和properties文件
+  
+     ~~~
+         <!--在build中配置resources，来防止我们资源导出失败的问题-->
+         <build>
+             <resources>
+                 <resource>
+                     <directory>src/main/resources</directory>
+                     <includes>
+                         <include>**/*.properties</include>
+                         <include>**/*.xml</include>
+                     </includes>
+                 </resource>
+                 <resource>
+                     <directory>src/main/java</directory>
+                     <includes>
+                         <include>**/*.properties</include>
+                         <include>**/*.xml</include>
+                     </includes>
+                     <filtering>true</filtering>
+                 </resource>
+             </resources>
+         </build>
+     ~~~
+  
+     
 
 
 
@@ -465,11 +496,46 @@ namespace中的包名要和Dao/mapper接口的包名保持一致
 
 ## 3、Insert
 
+1. 接口类中添加
+
+~~~ java
+    //insert一个用户
+    int addUser(User user);
+~~~
+
+2. mapper中sql
+
+~~~ java
+    <!--对象中的属性可以直接取出来-->
+    <insert id="addUser" parameterType="com.rui.pojo.User">
+        insert into mybatis.user (id, name, pwd) values (#{id},#{name},#{pwd});
+    </insert>
+~~~
+
+3. 测试类
+
+   ~~~ java
+       @Test
+       public void addUser(){
+           SqlSession sqlSession = MyBatisUtils.getSqlSession();
+           UserMapper mapper = sqlSession.getMapper(UserMapper.class);
+           int res = mapper.addUser(new User(4, "哈哈", "123333"));
+           if (res>0){
+               System.out.println("插入成功");
+           }
+           //提交事务
+           sqlSession.commit();
+           sqlSession.close();
+       }
+   ~~~
+
+   
+
 ## 4、Update
 
 ## 5、Delete
 
-**注意点：增删改需要提交事务**
+##  **注意点：增、删、改需要提交事务**
 
 ## 6、分析错误
 
