@@ -353,7 +353,16 @@ org.apache.ibatis.binding.BindingException: Type interface com.rui.dao.UserDao i
 
 MapperRegistry是什么?
 
-核心配置文件中注册mappers
+核心配置文件中注册mappers，即
+
+~~~
+    <!--每一个Mapper.XML都需要在mybatis核心配置文件中注册-->
+    <mappers>
+        <mapper resource="com/rui/dao/UserMapper.xml"/>
+    </mappers>
+~~~
+
+
 
 - junit测试
 
