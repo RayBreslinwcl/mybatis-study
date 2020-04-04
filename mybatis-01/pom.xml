@@ -11,7 +11,7 @@
 
     <artifactId>mybatis-01</artifactId>
 
-    <!--在build中配置resources，来防止我们资源导出失败的问题-->
+    <!--在build中配置resources，来防止我们资源导出失败的问题【update】-->
     <build>
         <resources>
             <resource>

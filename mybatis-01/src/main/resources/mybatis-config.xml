@@ -20,7 +20,7 @@
             </dataSource>
         </environment>
     </environments>
-    <!--每一个Mapper.XML都需要在mybatis核心配置文件中注册-->
+    <!--每一个Mapper.XML都需要在mybatis核心配置文件中注册【update】-->
     <mappers>
         <mapper resource="com/rui/dao/UserMapper.xml"/>
     </mappers>
