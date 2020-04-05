@@ -37,6 +37,7 @@
     <resultMap id="StudentTeacher2" type="com.rui.pojo.Student">
         <result property="id" column="sid"/>
         <result property="name" column="sname"/>
+        <!--关联association-->
         <association property="teacher" javaType="com.rui.pojo.Teacher">
             <result property="id" column="tid"></result>
             <result property="name" column="tname"></result>
