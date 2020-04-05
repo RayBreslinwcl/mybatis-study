@@ -1166,13 +1166,13 @@ select * from user limit startIndex,pageSize
 
 了解即可，万一以后公司的架构师，说要使用，只需要知道它是什么东西！
 
-# 8、使用注解开发
+# 8、使用注解开发[mybaits-05]
 
 ## 8.1、面向接口编程
 
 **面向接口编程的根本原因：<u>解耦</u>，可拓展，提高复用，分层开发中、上层不用管具体的实现，大家都遵守共同的标准，使得开发变得容易，规范性好**
 
-
+**注意：如果简单的可以注解，但是对于复杂的，则不建议注解。建议直接使用xml【update】**
 
 ## 8.2、使用注解开发
 
@@ -1213,6 +1213,10 @@ public class UserMapperTest {
 本质：反射机制实现
 
 底层：动态代理！
+
+实现原理：
+
+![mybatis流程图](E:\Tools\WorkspaceforMyeclipse\mybatis-study\mybatis-study\mybatis笔记\mybatis-流程图.png)
 
 
 
