@@ -42,7 +42,10 @@
     </environments>
 
     <mappers>
-        <mapper class="com.rui.dao.TeacherMapper"/>
-        <mapper class="com.rui.dao.StudentMapper"/>
+        <!--<mapper class="com.rui.dao.TeacherMapper"/>-->
+        <!--<mapper class="com.rui.dao.StudentMapper"/>-->
+
+        <mapper resource="com/rui/dao/TeacherMapper.xml"/>
+        <mapper resource="com/rui/dao/StudentMapper.xml"/>
     </mappers>
 </configuration>
