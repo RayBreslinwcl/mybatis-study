@@ -653,7 +653,7 @@ Map传递参数，直接在sql中取出key即可！【parameterType="map"】
 
 ​    
 
-# 4、配置解析
+# 4、配置解析mybatis-02
 
 ## 1、核心配置文件
 
@@ -711,7 +711,7 @@ password=Cc105481
 
 
 ```properties
- <!--引入外部配置文件-->
+ <!--引入外部配置文件:resources/db.properties-->
     <properties resource="db.properties">
         <property name="username" value="root"/>
         <property name="password" value="Cc105481"/>
@@ -719,6 +719,7 @@ password=Cc105481
    
 ```
 
+- 【重点】
 - 可以直接引入外部文件
 - 可以在其中增加一些属性配置
 - 如果两个文件有同一字段，优先使用外部配置文件的！

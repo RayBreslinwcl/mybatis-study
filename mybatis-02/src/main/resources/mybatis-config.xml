@@ -7,7 +7,7 @@
     <!--引入外部配置文件-->
     <properties resource="db.properties">
         <property name="username" value="root"/>
-        <property name="password" value="Cc105481"/>
+        <property name="password" value="12s3456"/>
     </properties>
 
     <!--可以给实体类起别名-->
@@ -16,7 +16,7 @@
 <!--        <package name="com.rui.pojo"/>-->
     </typeAliases>
     <!--environments配置环境组-->
-    <!--default默认环境-->
+    <!--default默认环境：可以切换到其他环境-->
     <environments default="development">
         <!--environment单个环境-->
         <environment id="development">
