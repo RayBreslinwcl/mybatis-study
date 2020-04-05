@@ -42,6 +42,10 @@
             <result property="id" column="tid"></result>
             <result property="name" column="tname"></result>
         </association>
+        <!--复杂属性，需要单独处理
+        对象：association
+        集合：collection
+        -->
 
     </resultMap>
 
