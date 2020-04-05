@@ -829,7 +829,9 @@ public class Author {
 - 一旦创建了SqlSessionFactory，就不再需要它了
 - 局部变量
 
-![mybatis运行流程](/Users/yinrui/Documents/MyBatis/mybatis笔记/mybatis运行流程.png)**SqlSessionFactory：**
+![mybatis运行流程](/Users/yinrui/Documents/MyBatis/mybatis笔记/mybatis运行流程.png)
+
+**SqlSessionFactory：**
 
 - 可以想象为：数据库连接池
 - SqlSessionFactory 一旦被创建就应该在应用的运行期间一直存在，**没有任何理由丢弃它或重新创建另一个实例**。
@@ -850,7 +852,9 @@ public class Author {
 
 这里的每一个Mapper，就代表一个具体的业务！
 
-# 5、解决属性名和字段名不一致的问题
+# 5、解决属性名和字段名不一致的问题【mybatis-03：结果集映射】
+
+
 
 ## 1、问题
 
@@ -944,17 +948,15 @@ id name password
 
 在mybatis核心配置文件中，配置我们的日志！
 
+[官网] https://mybatis.org/mybatis-3/zh/logging.html
+
 ```xml
 <settings>
         <setting name="logImpl" value="STDOUT_LOGGING"/>
 </settings>
 ```
 
-
-
-![日志配置](/Users/yinrui/Documents/MyBatis/mybatis笔记/日志配置.png)
-
-
+![日志配置](E:\Tools\WorkspaceforMyeclipse\mybatis-study\mybatis-study\mybatis笔记\日志.png)
 
 ## 6.2、Log4j
 
@@ -1040,7 +1042,11 @@ Process finished with exit code 0
 
 ```
 
-**简单使用**
+参考：
+
+![日志功能](E:\Tools\WorkspaceforMyeclipse\mybatis-study\mybatis-study\mybatis笔记\日志配置.png)
+
+简单使用**
 
 1. 在要使用Log4j 的类中，导入org.apache.log4j.Logger;
 
