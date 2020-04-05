@@ -618,17 +618,18 @@ Map传递参数，直接在sql中取出key即可！【parameterType="map"】
    ```
    
    
+
 (2)UserMapper.xml 
-   
+
    ```xml
    <!--模糊查询-->
    <select id="getUserLike" parameterType="String" resultType="com.rui.pojo.User">
         SELECT * FROM mybatis.user WHERE name LIKE "%"#{likename}"%"
     </select>
    ```
-   
+
    （3）测试
-   
+
    ```java
        @Test
        public void getlike(){
@@ -648,8 +649,11 @@ Map传递参数，直接在sql中取出key即可！【parameterType="map"】
             */
        }
    ```
-   
-   
+
+
+​    
+
+# 4、配置解析
 
 ## 1、核心配置文件
 
