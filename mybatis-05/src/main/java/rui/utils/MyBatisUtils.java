@@ -26,7 +26,7 @@ public class MyBatisUtils {
     // SqlSession 完全包含了面向数据库执行 SQL 命令所需的所有方法。
     // 你可以通过 SqlSession 实例来直接执行已映射的 SQL 语句。
     public static SqlSession getSqlSession(){
-        return sqlSessionFactory.openSession(true);
+        return sqlSessionFactory.openSession(true);  //true：设置自动提交，即增删改都可以直接提交，不需要commit
     }
 
 

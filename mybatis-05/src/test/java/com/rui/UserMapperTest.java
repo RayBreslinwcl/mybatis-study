@@ -23,7 +23,17 @@ public class UserMapperTest {
         System.out.println(user);*/
 //        mapper.addUser(new User(5,"Hello","123123"));
 //        mapper.updateUser(new User(5,"to","21231"));
-        mapper.deleteUser(5);
+//        mapper.deleteUser(5);
+//        sqlSession.close();
+
+        //==================add
+//        List<User> users = mapper.getUsers();
+//        for (User user : users) {
+//            System.out.println(user);
+//        }
+
+        mapper.addUser(new User(8,"Hello","123123"));
+
         sqlSession.close();
     }
 }
