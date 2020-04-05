@@ -35,4 +35,20 @@ public class MyTest {
 
         sqlSession.close();
     }
+
+    //新测试
+    @Test
+    public void test0(){
+        SqlSession sqlSession=MyBatisUtils.getSqlSession();
+        TeacherMapper mapper = sqlSession.getMapper(TeacherMapper.class);
+        List<Teacher> teacher=mapper.getTeacher0();
+        for (Teacher teacher1 : teacher) {
+            System.out.println(teacher1);
+        }
+//        SqlSession sqlSession = MyBatisUtils.getSqlSession();
+//        Teacher teacher = sqlSession.getMapper(TeacherMapper.class).getTeacher2(1);
+//        System.out.println(teacher);
+
+        sqlSession.close();
+    }
 }
