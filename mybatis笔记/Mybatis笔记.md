@@ -719,7 +719,7 @@ password=Cc105481
    
 ```
 
-- 【重点】
+- 【重点：2020/4/5】
 - 可以直接引入外部文件
 - 可以在其中增加一些属性配置
 - 如果两个文件有同一字段，优先使用外部配置文件的！
@@ -748,9 +748,19 @@ password=Cc105481
       </typeAliases>
   ```
 
+  - UserMapper.xml中配置使用
   
+    ```xml
+        <!--select查询语句-->
+        <select id="getUserList" resultType="User">
+           /*定义sql*/
+           select * from mybatis.user
+       </select>
+    ```
+  
+    
 
-在实体类比较少的时候，使用第一种方式。
+- 在实体类比较少的时候，使用第一种方式。
 
 如果实体类十分多，建议使用第二种方式。
 
@@ -767,9 +777,48 @@ public class Author {
 
 这是 MyBatis 中极为重要的调整设置，它们会改变 MyBatis 的运行时行为。
 
-![Settings](/Users/yinrui/Documents/MyBatis/mybatis笔记/Settings.png)
+![Settings]("E:\Tools\WorkspaceforMyeclipse\mybatis-study\mybatis-study\mybatis笔记\Settings.png")
 
+## 6.映射器（mappers）
 
+参考：https://mybatis.org/mybatis-3/zh/configuration.html#mappers
+
+方式一：
+
+```xml
+    <!--每一个Mapper.XML都需要在mybatis核心配置文件中注册-->
+    <mappers>
+        <mapper resource="com/rui/dao/UserMapper.xml"/>
+    </mappers>
+```
+
+方式二：
+
+```xml
+<!-- 将包内的映射器接口实现全部注册为映射器 -->
+<mappers>
+  <package class="com.rui.dao.UserMapper"/>
+</mappers>
+```
+
+注意
+
+- 接口和他的Mapper配置文件必须同名
+- 接口和他的Mapper配置文件必须在同一个包下
+
+方式三：使用扫描包进行注入绑定
+
+```xml
+<!-- 将包内的映射器接口实现全部注册为映射器 -->
+<mappers>
+  <package name="com.rui.dao"/>
+</mappers>
+```
+
+注意
+
+- 接口和他的Mapper配置文件必须同名
+- 接口和他的Mapper配置文件必须在同一个包下
 
 ## 6、生命周期和作用域
 

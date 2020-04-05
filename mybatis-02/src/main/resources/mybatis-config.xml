@@ -35,5 +35,6 @@
     <!--每一个Mapper.XML都需要在mybatis核心配置文件中注册-->
     <mappers>
         <mapper resource="com/rui/dao/UserMapper.xml"/>
+        <!--<package name="com.rui.dao"/>-->
     </mappers>
 </configuration>
