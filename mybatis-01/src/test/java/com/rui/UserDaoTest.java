@@ -46,7 +46,7 @@ public class UserDaoTest {
     public void addUser(){
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        int res = mapper.addUser(new User(4, "哈哈", "123333"));
+        int res = mapper.addUser(new User(5, "哈哈", "123333"));
         if (res>0){
             System.out.println("插入成功");
         }
@@ -61,7 +61,7 @@ public class UserDaoTest {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
         HashMap<String, Object> map = new HashMap<>();
-        map.put("userId",4);
+        map.put("userId",6);
         map.put("userName","王五");
         map.put("password","23333");
         mapper.addUser2(map);
@@ -86,5 +86,23 @@ public class UserDaoTest {
         mapper.deleteUser(4);
         sqlSession.commit();
         sqlSession.close();
+    }
+
+    @Test
+    public void getlike(){
+        SqlSession sqlSession=MyBatisUtils.getSqlSession();
+        UserMapper mapper=sqlSession.getMapper(UserMapper.class);
+
+//        List<User> userList= mapper.getUserLike("%李%");
+        List<User> userList= mapper.getUserLike("李"); //在项目sql拼接中使用通配符
+        for (User user : userList) {
+            System.out.println(user);
+        }
+        sqlSession.close();
+
+        /**
+         * 结果：
+         * user{id=3, name='李四', pwd='123890'}
+         */
     }
 }

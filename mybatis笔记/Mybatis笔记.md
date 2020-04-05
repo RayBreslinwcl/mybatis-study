@@ -550,12 +550,13 @@ namespace中的包名要和Dao/mapper接口的包名保持一致
 
 假设，我们的实体类，或者数据库中的表，字段或者参数过多，我们应当考虑使用Map！
 
-
+1. 接口
 
 ```java
 //万能Map
     int addUser2(Map<String,Object> map);
 ```
+2. xml
 
 ```xml
     <!--对象中的属性，可以直接取出来 parameterType=传递map中的key-->
@@ -563,6 +564,7 @@ namespace中的包名要和Dao/mapper接口的包名保持一致
         insert into mybatis.user (id, name, pwd) values (#{userId},#{userName},#{password});
     </insert>
 ```
+3. 测试
 
 ```java
 //万能map
@@ -607,8 +609,47 @@ Map传递参数，直接在sql中取出key即可！【parameterType="map"】
    select * from mybatis.user where name like "%"#{value}"%"
    ```
 
-
-# 4、配置解析
+3. 代码：
+(1)java
+   
+   ```java
+ //========模糊
+    List<User> getUserLike(String likename);
+   ```
+   
+   
+(2)UserMapper.xml 
+   
+   ```xml
+   <!--模糊查询-->
+   <select id="getUserLike" parameterType="String" resultType="com.rui.pojo.User">
+        SELECT * FROM mybatis.user WHERE name LIKE "%"#{likename}"%"
+    </select>
+   ```
+   
+   （3）测试
+   
+   ```java
+       @Test
+       public void getlike(){
+           SqlSession sqlSession=MyBatisUtils.getSqlSession();
+           UserMapper mapper=sqlSession.getMapper(UserMapper.class);
+   
+   //        List<User> userList= mapper.getUserLike("%李%");
+           List<User> userList= mapper.getUserLike("李"); //在项目sql拼接中使用通配符
+           for (User user : userList) {
+               System.out.println(user);
+           }
+           sqlSession.close();
+   
+           /**
+            * 结果：
+            * user{id=3, name='李四', pwd='123890'}
+            */
+       }
+   ```
+   
+   
 
 ## 1、核心配置文件
 

@@ -32,4 +32,9 @@
     <delete id="deleteUser" parameterType="int">
         delete from mybatis.user where id = #{id};
     </delete>
+
+    <!--模糊查询-->
+    <select id="getUserLike" parameterType="String" resultType="com.rui.pojo.User">
+        SELECT * FROM mybatis.user WHERE name LIKE "%"#{likename}"%"
+    </select>
 </mapper>
