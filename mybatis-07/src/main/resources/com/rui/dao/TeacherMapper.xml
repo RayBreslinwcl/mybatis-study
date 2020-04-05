@@ -34,4 +34,11 @@
     <select id="getStudentByTeacherId" resultType="com.rui.pojo.Student">
         select * from mybatis.student where tid = #{tid}
     </select>
+
+
+
+    <!--=======================================================update================-->
+    <select id="getTeacher0" resultType="com.rui.pojo.Teacher">
+        SELECT * FROM teacher
+    </select>
 </mapper>
