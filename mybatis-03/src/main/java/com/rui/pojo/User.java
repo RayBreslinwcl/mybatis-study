@@ -2,8 +2,8 @@ package com.rui.pojo;
 
 public class User {
     private int id;
-    private String name;
-    private String password;
+    private String name; //数据库中是name
+    private String password; //数据库中是pwd
 
     public User() {
     }
