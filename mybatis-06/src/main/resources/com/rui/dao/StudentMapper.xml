@@ -46,7 +46,35 @@
         对象：association
         集合：collection
         -->
-
+        <!--处理方式：参考mybatis笔记-->
+        <!--1.按照查询嵌套处理-->
+        <!--2.按照结果嵌套处理-->
     </resultMap>
+
+    <!--==============================================================================-->
+    <!--方式1：按照查询嵌套处理-->
+    <!--
+思路：
+    1、查询所有的学生信息
+    2、根据查询出来的学生的id的tid，寻找对应的老师！ -子查询
+select s.id,s.name,t.name from student s,teacher t where s.tid=t.id
+-->
+
+    <!--<select id="getStudent" resultMap="StudentTeacher">-->
+        <!--select * from student-->
+    <!--</select>-->
+
+    <!--<resultMap id="StudentTeacher" type="com.rui.pojo.Student">-->
+        <!--&lt;!&ndash;复杂的属性，我们需要单独处理  对象：association  集合：collection&ndash;&gt;-->
+        <!--<association property="teacher" column="tid" javaType="com.rui.pojo.Teacher" select="getTeacher"/>-->
+    <!--</resultMap>-->
+
+    <!--<select id="getTeacher" resultType="com.rui.pojo.Teacher">-->
+        <!--select * from teacher where id = #{id}-->
+    <!--</select>-->
+
+    <!--==============================================================================-->
+    <!--方式2：按照结果嵌套处理：即为当前处理方法-->
+
 
 </mapper>
