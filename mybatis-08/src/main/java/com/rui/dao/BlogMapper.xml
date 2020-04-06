@@ -8,6 +8,7 @@
         values (#{id}, #{title}, #{author}, #{creatTime}, #{views});
     </insert>
 
+    <!--if判断-->
     <sql id="if-title-author">
         <if test="title != null">
             title = #{title}
@@ -24,6 +25,7 @@
         </where>
     </select>
 
+    <!--choose-->
     <select id="queryBlogChoose" parameterType="map" resultType="com.rui.pojo.Blog">
         select * from mybatis.bolg
         <where>

@@ -45,10 +45,24 @@ public class MyTest {
         SqlSession sqlSession = MyBatisUtils.getSqlSession();
         BlogMapper mapper = sqlSession.getMapper(BlogMapper.class);
         HashMap map = new HashMap();
-//        map.put("views",9999);
-//        map.put("author","尹锐2");
-        //map.put("title","Java如此简单2");
-        map.put("id","75c23f88ea6f4bc6ac4dc0a8f7afa373");
+        map.put("views",9999);
+//        map.put("author","狂神说");
+//        map.put("title","Java如此简单2");
+        //1.查询if
+//        List<Blog> blogs = mapper.queryBlogIF(map);
+//        for (Blog blog : blogs) {
+//            System.out.println(blog);
+//        }
+
+        //2.choose
+//        List<Blog> blogs = mapper.queryBlogChoose(map);
+//        for (Blog blog : blogs) {
+//            System.out.println(blog);
+//        }
+
+        //3.set更新
+        map.put("author","狂神说update");
+        map.put("id","1a8935382536493685125befdefa99bd");
         mapper.updateBlog(map);
         sqlSession.close();
     }

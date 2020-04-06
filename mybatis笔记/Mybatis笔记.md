@@ -1265,7 +1265,7 @@ public interface UserMapper {
 
 **#{}   ${}区别**
 
-
+https://www.php.cn/mysql-tutorials-369206.html
 
 # 9、Lombok
 
@@ -1332,7 +1332,7 @@ Never write another getter or equals method again, with one annotation your clas
 
 
 
-# 10、多对一处理
+# 10、多对一处理【mybatis-06】
 
 多对一：
 
@@ -1389,6 +1389,7 @@ INSERT INTO student(`id`,`name`,`tid`) VALUES (5,'小王',1);
 思路：
     1、查询所有的学生信息
     2、根据查询出来的学生的id的tid，寻找对应的老师！ -子查询
+select s.id,s.name,t.name from student s,teacher t where s.tid=t.id
 
 -->
 
@@ -1434,7 +1435,7 @@ select * from student
 - 子查询
 - 联表查询
 
-# 11、一对多处理
+# 11、一对多处理【mybatis-07】
 
 比如：一个老师拥有多个学生！
 
@@ -1592,6 +1593,12 @@ CREATE TABLE `bolg`(
 
 
 ## IF
+
+where这个缺点：
+
+（1）正常没有1=1
+
+（2）但是，当第一个参数title没有，而第二个author有的时候，则where and 是错误的，所以需要用where标签
 
 ```XML
 <select id="queryBlogIF" parameterType="map" resultType="com.rui.pojo.Blog">
