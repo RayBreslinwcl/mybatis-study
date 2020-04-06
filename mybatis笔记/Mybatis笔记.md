@@ -1822,7 +1822,7 @@ Where,set,choose,when
 
 1. 查询不同的东西
 
-2. 增删改操作，可能会改变原来的数据，所以必定会刷新缓存！
+2. 增删改操作，可能会改变原来的数据，所以必定会刷新缓存！【***update】
 
 3. 查询不同的Mapper.xml
 
@@ -1855,7 +1855,21 @@ Where,set,choose,when
    ```xml
    <!--显式的开启全局缓存-->
    <setting name="cacheEnabled" value="true"/>
+   
    ```
+
+   最好显示开启，虽然默认是开启的
+
+   ```java
+       <settings>
+       <!--标准日志工厂实现-->
+           <setting name="logImpl" value="STDOUT_LOGGING"/>
+           <!--显式的开启全局缓存-->
+           <setting name="cacheEnabled" value="true"/>
+       </settings>
+   ```
+
+   
 
 2. 在要使用二级缓存的Mapper中开启
 
@@ -1868,6 +1882,7 @@ Where,set,choose,when
           size="512"
           readOnly="true"/>
    ```
+   
 
 3. 测试
 
@@ -1877,6 +1892,27 @@ Where,set,choose,when
        java.io.NotSerializableException: com.rui.pojo.User
       ```
 
+   2. 修改类
+
+      ```java
+      package com.rui.pojo;
+      
+      import lombok.Data;
+      
+      import java.io.Serializable;
+      
+      @Data
+      public class User implements Serializable {
+          private int id;
+          private String name;
+          private String pwd;
+      }
+      
+      ```
+      
+      
+      
+      
       
 
 小结：

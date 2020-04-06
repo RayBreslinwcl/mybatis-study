@@ -19,6 +19,7 @@ public class MyTest {
         System.out.println(user);
         sqlSession.close();
 
+        System.out.println("=========================================================");
 
         UserMapper mapper2 = sqlSession2.getMapper(UserMapper.class);
         User user2 = mapper2.queryUserById(1);
