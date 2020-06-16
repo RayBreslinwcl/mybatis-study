@@ -748,16 +748,17 @@ Map传递参数，直接在sql中取出key即可！【parameterType="map"】
    ```
 
 3. 代码：
-(1)java
-   
+
+（1）java
+
    ```java
  //========模糊
     List<User> getUserLike(String likename);
    ```
-   
+
    
 
-(2)UserMapper.xml 
+（2）UserMapper.xml 
 
    ```xml
    <!--模糊查询-->
@@ -766,7 +767,7 @@ Map传递参数，直接在sql中取出key即可！【parameterType="map"】
     </select>
    ```
 
-   （3）测试
+（3）测试
 
    ```java
        @Test
