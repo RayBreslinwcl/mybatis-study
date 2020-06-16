@@ -14,7 +14,7 @@
 
 ## 1.1、什么是MyBatis
 
-![mybatis](/Users/yinrui/Documents/MyBatis/mybatis笔记/mybatis.png)
+![1592287020940](Mybatis笔记.assets/1592287020940.png)
 
 ## 简介
 
@@ -184,7 +184,9 @@ INSERT INTO `user` (`id`,`name`,`pwd`) VALUES
 
 ## 2.2、创建一个模块
 
-- 编写mybatis的核心配置文件
+- 编写mybatis的核心配置文件mybatis-config.xml
+
+  ![1592287101050](Mybatis笔记.assets/1592287101050.png)
 
   ```xml
   <?xml version="1.0" encoding="UTF-8" ?>
@@ -216,6 +218,10 @@ INSERT INTO `user` (`id`,`name`,`pwd`) VALUES
   
 
 - 编写mybatis工具类
+
+位置：
+
+![1592287155305](Mybatis笔记.assets/1592287155305.png)
 
 ```java
 package com.rui.utils;
@@ -328,7 +334,7 @@ public class MyBatisUtils {
 
   
 
-- 接口实现类由原来的UserImpl转变为一个Mapper配置文件
+- 接口实现类由原来的UserImpl转变为一个Mapper配置文件UserMapper.xml
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -345,6 +351,12 @@ public class MyBatisUtils {
 </mapper>
 ```
 
+位置如下
+
+<img src="Mybatis笔记.assets/1592287827488.png" alt="1592287827488" style="zoom:80%;" />
+
+
+
 ## 2.4、测试
 
  注意点：
@@ -353,7 +365,7 @@ org.apache.ibatis.binding.BindingException: Type interface com.rui.dao.UserDao i
 
 MapperRegistry是什么?
 
-核心配置文件中注册mappers，即
+### 【***】核心配置文件mybatis-config.xml中注册mappers，即
 
 ~~~
     <!--每一个Mapper.XML都需要在mybatis核心配置文件中注册-->
@@ -1883,7 +1895,6 @@ Where,set,choose,when
           readOnly="true"/>
    ```
    
-
 3. 测试
 
    1. 问题：我们需要将实体类序列化！否则就会报错
