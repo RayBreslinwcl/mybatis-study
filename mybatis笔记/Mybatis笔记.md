@@ -182,7 +182,7 @@ INSERT INTO `user` (`id`,`name`,`pwd`) VALUES
 
 
 
-## 2.2、创建一个模块
+## 2.2、创建一个mybatis的模块【基于mysql数据库的】
 
 - 编写mybatis的核心配置文件mybatis-config.xml
 
@@ -259,7 +259,7 @@ public class MyBatisUtils {
 
 
 
-## 2.3、编写代码
+## 2.3、编写pojo/dao/mapper.xm.代码
 
 - 实体类
 
@@ -444,9 +444,135 @@ MapperRegistry是什么?
          </build>
      ~~~
   
-     
 
 
+
+## 2.5 基于postgresql的实现【拓展***】
+
+### (1)pom.xml依赖
+
+```xml
+        <dependency>
+            <groupId>org.mybatis</groupId>
+            <artifactId>mybatis</artifactId>
+            <version>3.5.3</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+        </dependency>
+        <!--数据库相关-->
+        <!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <version>42.2.2</version>
+        </dependency>
+```
+
+### (2)mybatis-config.xml核心配置文件
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--configuration核心配置文件-->
+<configuration>
+    <!--environments配置环境组-->
+    <!--default默认环境-->
+    <environments default="postgresql">
+        <!--environment单个环境-->
+        <environment id="postgresql">
+            <!--transactionManager配置事务管理器-->
+            <transactionManager type="JDBC"/>
+            <!--配置连接池-->
+            <dataSource type="POOLED">
+                <property name="driver" value="org.postgresql.Driver"/>
+                <property name="url" value="jdbc:postgresql://ip:5432/test"/>
+                <property name="username" value="root"/>
+                <property name="password" value="123456"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!--配置 Mapper的位置：后续需要把对应map都添加，在此提前添加了-->
+    <mappers>
+        <mapper resource="com/ray/dao/TimeMapper.xml"/>
+    </mappers>
+</configuration>
+
+```
+
+
+
+### (3)mybatis工具类：产生sqlsession的
+
+```java
+package com.ray.utils;
+
+import org.apache.ibatis.io.Resources;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.apache.ibatis.session.SqlSessionFactoryBuilder;
+
+import java.io.IOException;
+import java.io.InputStream;
+
+//sqlSessionFactory--->SessionFactory
+public class MyBatisUtils {
+    private static SqlSessionFactory sqlSessionFactory;
+    static {
+        try{
+            //使用mybatis第一步、获取sqlSessionFactory对象
+            String resource = "mybatis.xml";
+            InputStream inputStream = Resources.getResourceAsStream(resource);
+            sqlSessionFactory = new SqlSessionFactoryBuilder().build(inputStream);
+        }catch(IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    //既然有了 SqlSessionFactory，顾名思义，我们就可以从中获得 SqlSession 的实例了。
+    // SqlSession 完全包含了面向数据库执行 SQL 命令所需的所有方法。
+    // 你可以通过 SqlSession 实例来直接执行已映射的 SQL 语句。
+    public static SqlSession getSqlSession(){
+        return sqlSessionFactory.openSession();
+    }
+}
+
+```
+
+
+
+### (4)编写pojo/dao/mapper.xml代码
+
+其中，TimeMapper.xml注意两点
+
+```xml
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ray.dao.TimeMapper">
+    <select id="getObjTime" resultType="com.ray.pojo.Time">
+       select * from obj_time
+   </select>
+</mapper>
+
+```
+
+![1592297066253](Mybatis笔记.assets/1592297066253.png)
+
+### (5)核心配置文件mybatis-config.xml中注册mapper到mappers
+
+![1592297110305](Mybatis笔记.assets/1592297110305.png)
+
+### (6)后续测试即可，当然，还会有数据库字段和pojo字段对应的问题。后续会一一讲解遇到问题，以及解答。
+
+=====================================================================================================================================================================================================================================================================
 
 # 3、CRUD
 
