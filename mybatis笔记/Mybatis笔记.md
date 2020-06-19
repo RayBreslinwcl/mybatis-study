@@ -918,6 +918,8 @@ public class Author {
 
 ![Settings]("E:\Tools\WorkspaceforMyeclipse\mybatis-study\mybatis-study\mybatis笔记\Settings.png")
 
+![1592556569667](Mybatis笔记.assets/1592556569667.png)
+
 ## 6.映射器（mappers）
 
 参考：https://mybatis.org/mybatis-3/zh/configuration.html#mappers
@@ -988,6 +990,8 @@ public class Author {
 - 用完之后需要赶紧关闭，否则会占用资源
 
   ![SqlSessionFactory](/Users/yinrui/Documents/MyBatis/mybatis笔记/SqlSessionFactory.png)
+  
+  ![1592556620783](Mybatis笔记.assets/1592556620783.png)
 
 这里的每一个Mapper，就代表一个具体的业务！
 
@@ -1001,6 +1005,8 @@ public class Author {
 
 ![数据库中的字段](/Users/yinrui/Documents/MyBatis/mybatis笔记/数据库中的字段.png)
 
+![1592556707679](Mybatis笔记.assets/1592556707679.png)
+
 新建一个项目，拷贝之前的，测试实体类字段不一致的情况。
 
 ```java
@@ -1012,6 +1018,8 @@ public class User {
 ```
 
 ![测试错误](/Users/yinrui/Documents/MyBatis/mybatis笔记/测试错误.png)
+
+![1592556727462](Mybatis笔记.assets/1592556727462.png)
 
 ```java
 //select * from mybatis.user where id = #{id}
@@ -1040,7 +1048,7 @@ id name password
 <!--结果集映射-->
     <resultMap id="UserMap" type="User">
         <!--column数据库中的字段，property实体类中的属性-->
-        <result column="	id" property="id"/>
+        <result column="id" property="id"/>
         <result column="name" property="name"/>
         <result column="pwd" property="password"/>
     </resultMap>
@@ -1073,6 +1081,8 @@ id name password
 
 ![日志](/Users/yinrui/Documents/MyBatis/mybatis笔记/日志.png)
 
+![1592556842835](Mybatis笔记.assets/1592556842835.png)
+
 - SLF4J 
 - LOG4J【掌握】
 - LOG4J2
@@ -1096,6 +1106,8 @@ id name password
 ```
 
 ![日志配置](E:\Tools\WorkspaceforMyeclipse\mybatis-study\mybatis-study\mybatis笔记\日志.png)
+
+![1592556872453](Mybatis笔记.assets/1592556872453.png)
 
 ## 6.2、Log4j
 
@@ -1184,6 +1196,8 @@ Process finished with exit code 0
 参考：
 
 ![日志功能](E:\Tools\WorkspaceforMyeclipse\mybatis-study\mybatis-study\mybatis笔记\日志配置.png)
+
+![1592556884751](Mybatis笔记.assets/1592556884751.png)
 
 简单使用**
 
@@ -1302,6 +1316,8 @@ select * from user limit startIndex,pageSize
 ## 7.3、分页插件
 
 ![image-20191203175719275](/Users/yinrui/Documents/MyBatis/mybatis笔记/image-20191203175719275.png)
+
+![1592557045028](Mybatis笔记.assets/1592557045028.png)
 
 了解即可，万一以后公司的架构师，说要使用，只需要知道它是什么东西！
 
