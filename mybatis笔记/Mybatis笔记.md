@@ -1929,7 +1929,7 @@ Where,set,choose,when
 ## 13.1、简介
 
 ```
-查询	：		连接数据库，耗资源！
+查询	：连接数据库，耗资源！
 		一次查询的结果，给他暂存在一个可以直接取到的地方！--->内存	：	缓存
 		
 我们再次查询相同数据的时候，直接走缓存，就不用走数据库了
@@ -2024,7 +2024,7 @@ Where,set,choose,when
        </settings>
    ```
 
-   
+   ![1592557524536](Mybatis笔记.assets/1592557524536.png)
 
 2. 在要使用二级缓存的Mapper中开启
 
@@ -2079,7 +2079,7 @@ Where,set,choose,when
 
 ![image-20191205170549715](/Users/yinrui/Documents/MyBatis/mybatis笔记/image-20191205170549715.png)
 
-
+![1592557560395](Mybatis笔记.assets/1592557560395.png)
 
 ## 13.6、自定义缓存-encache
 
